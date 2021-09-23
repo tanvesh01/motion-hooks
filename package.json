@@ -1,10 +1,15 @@
 {
   "name": "motion-hooks",
   "version": "0.0.1",
-  "description": "Modular utility hooks that we often use grouped in one package. Written in TypeScript, documented, tested and maintained.Disclaimer: at least React 16 is needed (the one with hooks ;) )",
+  "description": "A simple Hooks wrapper over Motion One, An animation library, built on the Web Animations API for the smallest filesize and the fastest performance.",
   "author": "tanvesh01",
   "license": "Apache-2.0",
   "repository": "tanvesh01/motion-hooks",
+  "homepage": "https://github.com/tanvesh01/motion-hooks",
+  "bugs": {
+    "url": "https://github.com/tanvesh01/motion-hooks/issues",
+    "email": "sarvetanvesh01@gmail.com"
+  },
   "main": "dist/index.js",
   "engines": {
     "node": ">=8",
