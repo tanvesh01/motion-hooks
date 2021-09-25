@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "A simple Hooks wrapper over Motion One, An animation library, built on the Web Animations API for the smallest filesize and the fastest performance.",
   "author": "tanvesh01",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "repository": "tanvesh01/motion-hooks",
   "homepage": "https://github.com/tanvesh01/motion-hooks",
   "bugs": {
