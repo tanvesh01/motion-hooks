@@ -13,6 +13,7 @@ export default {
       exports: 'named',
       sourcemap: true,
       strict: false,
+      plugins: [terser()],
     },
     {
       file: pkg.main,
@@ -22,6 +23,6 @@ export default {
       strict: false,
     },
   ],
-  plugins: [sass({ insert: true }), typescript(), terser()],
+  plugins: [sass({ insert: true }), typescript()],
   external: ['react', 'react-dom', 'motion'],
 };
