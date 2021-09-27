@@ -22,7 +22,7 @@ npm install motion-hooks
 
 Returns all the properties returned by [`animate`](https://motion.dev/dom/animate) and some helper functions and state
 
-> Props returned my [`animate`](https://motion.dev/dom/animate) are `null` initialy
+> Props returned my [`animate`](https://motion.dev/dom/animate) are `null` initially
 
 You may view this example [here on codesandbox](https://codesandbox.io/s/divine-mountain-qelct?file=/src/App.js).
 
