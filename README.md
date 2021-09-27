@@ -1,12 +1,10 @@
 # motion-hooks
 
-A simple Hooks wrapper over [Motion One](https://motion.dev/), An animation library, built on the Web Animations API for the smallest filesize and the fastest performance.
+A React Hooks wrapper over [Motion One](https://motion.dev/), An animation library, built on the Web Animations API for the smallest filesize and the fastest performance.
 
-[![npm version](https://badge.fury.io/js/motion-hooks.svg)](https://badge.fury.io/js/motion-hooks)
+[![npm version](https://badge.fury.io/js/motion-hooks.svg)](https://www.npmjs.com/package/motion-hooks)
 
 ## Installation
-
----
 
 ```
 npm install motion-hooks
@@ -15,8 +13,6 @@ npm install motion-hooks
 > Your project needs to have react@16.8.0 react-dom@16.8.0 or greater
 
 ## Hooks
-
----
 
 ### `useMotionAnimate`
 
@@ -94,7 +90,7 @@ const { play, replay, reset, isFinished, ...propsReturnedByAnimate } =
     },
     {
       onFinish: () => {
-        // Whatever you want to do when animation finishes playing
+        // Whatever you want to do when animation finishes
       },
     },
   );
@@ -102,6 +98,6 @@ const { play, replay, reset, isFinished, ...propsReturnedByAnimate } =
 
 ---
 
-Any Type of feedback is more than welcome! This is project is in very early stages and would love to contributors of any skill/exp level.
+Any Type of feedback is more than welcome! This project is in very early stage and would love to have contributors of any skill/exp level.
 
-You can directly contact me on my [Twitter handle @Sarve\_\_\_tanvesh](https://twitter.com/Sarve___tanvesh)
+You can contact me on my [Twitter handle @Sarve\_\_\_tanvesh](https://twitter.com/Sarve___tanvesh)
