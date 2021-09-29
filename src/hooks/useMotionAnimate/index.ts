@@ -1,6 +1,11 @@
 import { useState } from 'react';
 
-import { AcceptedElements, animate, AnimationListOptions, MotionKeyframesDefinition } from 'motion';
+import {
+  AcceptedElements,
+  animate,
+  AnimationListOptions,
+  MotionKeyframesDefinition,
+} from 'motion';
 
 interface UseAnimationTypes {
   onFinish: (res: (value?: unknown) => void) => void;
@@ -46,7 +51,7 @@ export const useMotionAnimate = (
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const play = async () => {
     if (selector) {
-      let selectedType : AcceptedElements;
+      let selectedType: AcceptedElements;
 
       if (typeof selector === 'string') {
         selectedType = selector;
