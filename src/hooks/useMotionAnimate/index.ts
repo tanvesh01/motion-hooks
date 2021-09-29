@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { AcceptedElements, animate, AnimationListOptions, MotionKeyframesDefinition } from 'motion';
 
 interface UseAnimationTypes {
-  onFinish: (res: any) => void;
+  onFinish: (res: (value?: unknown) => void) => void;
 }
 
 interface NulledAnimationControls {
@@ -13,7 +13,7 @@ interface NulledAnimationControls {
   finish?: VoidFunction | null;
   reverse?: VoidFunction | null;
   cancel: VoidFunction | null;
-  finished?: Promise<any>;
+  finished?: Promise<unknown>;
   currentTime: number | null;
   playbackRate: number | null;
 }
