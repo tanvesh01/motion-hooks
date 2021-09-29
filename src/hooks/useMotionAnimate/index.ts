@@ -82,10 +82,9 @@ export const useMotionAnimate = (
   };
 
   const reset = () => {
-    if (typeof selector !== 'string') {
-      // @ts-ignore
+    if (typeof selector !== 'string' && selector.current) {
       selector.current.style = null;
-    } else {
+    } else if (typeof selector === 'string') {
       let selectedElements: NodeListOf<HTMLElement> =
         document.querySelectorAll(selector);
 
