@@ -1,9 +1,14 @@
 import { useState } from 'react';
 
-import { AcceptedElements, animate, AnimationListOptions, MotionKeyframesDefinition } from 'motion';
+import {
+  AcceptedElements,
+  animate,
+  AnimationListOptions,
+  MotionKeyframesDefinition,
+} from 'motion';
 
 interface UseAnimationTypes {
-  onFinish: (res: any) => void;
+  onFinish: (res: (value?: unknown) => void) => void;
 }
 
 interface NulledAnimationControls {
@@ -13,7 +18,7 @@ interface NulledAnimationControls {
   finish?: VoidFunction | null;
   reverse?: VoidFunction | null;
   cancel: VoidFunction | null;
-  finished?: Promise<any>;
+  finished?: Promise<unknown>;
   currentTime: number | null;
   playbackRate: number | null;
 }
@@ -46,7 +51,7 @@ export const useMotionAnimate = (
   const [isFinished, setIsFinished] = useState<boolean>(false);
   const play = async () => {
     if (selector) {
-      let selectedType : AcceptedElements;
+      let selectedType: AcceptedElements;
 
       if (typeof selector === 'string') {
         selectedType = selector;
