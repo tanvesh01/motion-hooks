@@ -51,7 +51,7 @@ interface UseMotionTimelineReturn extends NulledAnimationControls {
  * `useMotionTimeline` returns all the properties returned by `animate` and some helper functions and state
  * for Example: `play`, `reset`, `replay` and `isFinished`
  * @param sequence - `sequence` is an array, defines animations with the same settings as the animate function. In the arrays,  Element can be either a string or a ref.
- * @param options - Optional parameter. Refer to [motion doc's](https://motion.dev/dom/animate#options) for the values you could pass into this.
+ * @param options - Optional parameter. Refer to [motion doc's](https://motion.dev/dom/timeline#options) for the values you could pass into this.
  * @param events - Pass functions of whatever you want to happen when a event like `onFinish` happens.
  */
 export const useMotionTimeline = (
