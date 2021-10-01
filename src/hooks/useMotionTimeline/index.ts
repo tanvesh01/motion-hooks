@@ -95,6 +95,7 @@ export const useMotionTimeline = (
     };
 
     const reset = () => {
+        propsRefContainer.stop && propsRefContainer.stop();
         sequence.forEach((el) => {
             let selector = el[0];
             if (isOfType(selector, 'current')) {
