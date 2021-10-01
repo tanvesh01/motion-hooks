@@ -1,26 +1,26 @@
 import { useState } from 'react';
 
 import {
-  AcceptedElements,
-  animate,
-  AnimationListOptions,
-  MotionKeyframesDefinition,
+    AcceptedElements,
+    animate,
+    AnimationListOptions,
+    MotionKeyframesDefinition,
 } from 'motion';
 
 interface UseAnimationTypes {
-  onFinish: (res: (value?: unknown) => void) => void;
+    onFinish: (res: (value?: unknown) => void) => void;
 }
 
 interface NulledAnimationControls {
-  play: VoidFunction | null;
-  pause: VoidFunction | null;
-  stop: VoidFunction | null;
-  finish?: VoidFunction | null;
-  reverse?: VoidFunction | null;
-  cancel: VoidFunction | null;
-  finished?: Promise<unknown>;
-  currentTime: number | null;
-  playbackRate: number | null;
+    play: VoidFunction | null;
+    pause: VoidFunction | null;
+    stop: VoidFunction | null;
+    finish?: VoidFunction | null;
+    reverse?: VoidFunction | null;
+    cancel: VoidFunction | null;
+    finished?: Promise<unknown>;
+    currentTime: number | null;
+    playbackRate: number | null;
 }
 
 /**
@@ -32,78 +32,78 @@ interface NulledAnimationControls {
  * @param events - Pass functions of whatever you want to happen when a event like `onFinish` happens.
  */
 export const useMotionAnimate = (
-  selector: React.RefObject<any> | string,
-  keyframes: MotionKeyframesDefinition,
-  options?: AnimationListOptions | undefined,
-  events?: UseAnimationTypes,
+    selector: React.RefObject<any> | string,
+    keyframes: MotionKeyframesDefinition,
+    options?: AnimationListOptions | undefined,
+    events?: UseAnimationTypes,
 ) => {
-  const [propsRefContainer, setPropsRefContainer] =
-    useState<NulledAnimationControls>({
-      currentTime: null,
-      playbackRate: null,
-      // functions
-      pause: null,
-      play: null,
-      finish: null,
-      cancel: null,
-      stop: null,
-    });
-  const [isFinished, setIsFinished] = useState<boolean>(false);
-  const play = async () => {
-    if (selector) {
-      let selectedType: AcceptedElements;
-
-      if (typeof selector === 'string') {
-        selectedType = selector;
-      } else {
-        selectedType = selector.current;
-      }
-
-      if (selectedType) {
-        const animateInstance = animate(selectedType, keyframes, options);
-        setIsFinished(false);
-        await animateInstance.finished.then((res) => {
-          events && events.onFinish(res);
-          setIsFinished(true);
+    const [propsRefContainer, setPropsRefContainer] =
+        useState<NulledAnimationControls>({
+            currentTime: null,
+            playbackRate: null,
+            // functions
+            pause: null,
+            play: null,
+            finish: null,
+            cancel: null,
+            stop: null,
         });
+    const [isFinished, setIsFinished] = useState<boolean>(false);
+    const play = async () => {
+        if (selector) {
+            let selectedType: AcceptedElements;
 
-        setPropsRefContainer({
-          currentTime: animateInstance.currentTime,
-          playbackRate: animateInstance.playbackRate,
-          // functions
-          pause: animateInstance.pause,
-          play: animateInstance.play,
-          finish: animateInstance.finish,
-          cancel: animateInstance.cancel,
-          stop: animateInstance.stop,
-        });
-      }
-    }
-  };
+            if (typeof selector === 'string') {
+                selectedType = selector;
+            } else {
+                selectedType = selector.current;
+            }
 
-  const reset = () => {
-    if (typeof selector !== 'string' && selector.current) {
-      selector.current.style = null;
-    } else if (typeof selector === 'string') {
-      let selectedElements: NodeListOf<HTMLElement> =
-        document.querySelectorAll(selector);
+            if (selectedType) {
+                const animateInstance = animate(selectedType, keyframes, options);
+                setIsFinished(false);
+                await animateInstance.finished.then((res) => {
+                    events && events.onFinish(res);
+                    setIsFinished(true);
+                });
 
-      selectedElements.forEach((el) => {
-        el.style && el.removeAttribute('style');
-      });
-    }
-  };
+                setPropsRefContainer({
+                    currentTime: animateInstance.currentTime,
+                    playbackRate: animateInstance.playbackRate,
+                    // functions
+                    pause: animateInstance.pause,
+                    play: animateInstance.play,
+                    finish: animateInstance.finish,
+                    cancel: animateInstance.cancel,
+                    stop: animateInstance.stop,
+                });
+            }
+        }
+    };
 
-  const replay = () => {
-    reset();
-    isFinished && play();
-  };
+    const reset = () => {
+        if (typeof selector !== 'string' && selector.current) {
+            selector.current.style = null;
+        } else if (typeof selector === 'string') {
+            let selectedElements: NodeListOf<HTMLElement> =
+                document.querySelectorAll(selector);
 
-  return {
-    ...propsRefContainer,
-    play,
-    reset,
-    replay,
-    isFinished,
-  };
+            selectedElements.forEach((el) => {
+                el.style && el.removeAttribute('style');
+            });
+        }
+    };
+
+    const replay = () => {
+        reset();
+        isFinished && play();
+    };
+
+    return {
+        ...propsRefContainer,
+        play,
+        reset,
+        replay,
+        isFinished,
+    };
 };
