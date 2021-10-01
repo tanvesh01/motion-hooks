@@ -33,9 +33,9 @@
     ]
   },
   "peerDependencies": {
-    "motion": ">= 10.0.0",
-    "react": ">= 16.8.0",
-    "react-dom": ">= 16.8.0"
+    "motion": "^10.1.1",
+    "react": ">= 17.0.2",
+    "react-dom": ">= 17.0.2"
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^3.4.1",
@@ -46,8 +46,8 @@
     "babel-runtime": "^6.26.0",
     "eslint-plugin-react-hooks": "^4.0.8",
     "jest": "^26.1.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-test-renderer": "^16.13.1",
     "rollup": "^2.57.0",
     "rollup-plugin-sass": "^1.2.2",
