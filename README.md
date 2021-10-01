@@ -7,7 +7,7 @@ A React Hooks wrapper over [Motion One](https://motion.dev/), An animation libra
 ## Installation
 
 ```
-npm install motion-hooks
+npm install motion-hooks motion
 ```
 
 > Your project needs to have react@16.8.0 react-dom@16.8.0 or greater
