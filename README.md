@@ -2,7 +2,7 @@
 
 A React Hooks wrapper over [Motion One](https://motion.dev/), An animation library, built on the Web Animations API for the smallest filesize and the fastest performance.
 
-[![npm version](https://badge.fury.io/js/motion-hooks.svg)](https://www.npmjs.com/package/motion-hooks)
+[![npm version](https://badge.fury.io/js/motion-hooks.svg)](https://www.npmjs.com/package/motion-hooks) ![npm](https://img.shields.io/npm/dt/motion-hooks) [![Twitter Follow](https://img.shields.io/twitter/follow/Sarve___tanvesh?label=Chat)](https://twitter.com/Sarve___tanvesh)
 
 ## Installation
 
@@ -59,6 +59,19 @@ function App() {
         </div>
     );
 }
+```
+
+Instead of passing strings to select elements, you can also pass a `ref` :point_down:
+
+```jsx
+const boxRef = useRef(null);
+const { play, isFinished, replay } = useMotionAnimate(
+    boxRef,
+    { y: -20, scale: 1.2 },
+    { duration: 1 },
+);
+
+return <div ref={boxRef}>BOX</div>;
 ```
 
 **API**
