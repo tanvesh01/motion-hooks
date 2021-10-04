@@ -19,6 +19,24 @@ As of now, motion-hooks has 2 hooks that wrap around `animate` and `timeline` of
 -   [`useMotionAnimate`](https://github.com/tanvesh01/motion-hooks#usemotionanimate)
 -   [`useMotionTimeline`](https://github.com/tanvesh01/motion-hooks#usemotiontimeline)
 
+## Example usage
+
+**Things You could do with [`useMotionAnimate`](https://github.com/tanvesh01/motion-hooks#usemotionanimate)**
+
+Animating List - [Link to codesandbox](https://codesandbox.io/s/divine-mountain-qelct?file=/src/App.js)
+
+![useMotionAnimate List Example](https://media1.giphy.com/media/JNMxjkEipIurs5RaQb/giphy.gif)
+
+Animating Counter - [Link to codesandbox](https://codesandbox.io/s/nice-browser-d4ds3?file=/src/App.js)
+
+![useMotionAnimate Counter Example](https://media3.giphy.com/media/80wDwOyRlnS1woHcF0/giphy.gif)
+
+**Things You could do with [`useMotionTimeline`](https://github.com/tanvesh01/motion-hooks#usemotiontimeline)**
+
+Animating elements independently - [Link to codesandbox](https://codesandbox.io/s/dazzling-dawn-f48sm?file=/src/App.js)
+
+![useMotionTimeline Example Usage](https://media1.giphy.com/media/RxCRUxJgi4nuM7b7yv/giphy.gif)
+
 ### `useMotionAnimate`
 
 Returns all the properties returned by [`animate`](https://motion.dev/dom/animate) and some helper functions and state
