@@ -198,7 +198,7 @@ const { play, replay, reset, isFinished, timelineInstance } = useMotionTimeline(
 -   `replay`: Resets and plays the animation
 -   `reset`: resets the element to its original styling
 -   `isFinished`: is `true` when animation has finished playing
--   `timelineInstance`: Refer to [motion one docs](https://motion.dev/dom/controls)
+-   `timelineInstance`: Animation Controls. Refer to [motion one docs](https://motion.dev/dom/controls) for more.
 
 `useMotionTimeline` accepts:
 
