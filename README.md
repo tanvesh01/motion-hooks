@@ -136,7 +136,7 @@ const { play, replay, reset, isFinished, ...propsReturnedByAnimate } =
 
 Create complex sequences of animations across multiple elements.
 
-Returns all the properties returned by [`timeline`](https://motion.dev/dom/timeline) and some helper functions and state
+returns `timelineInstance` (Animation Controls) that are returned by [`timeline`](https://motion.dev/dom/timeline) and some helper functions and state
 
 > Props returned my [`timeline`](https://motion.dev/dom/timeline) are `null` initially
 
@@ -185,8 +185,11 @@ function App() {
 **API**
 
 ```js
-const { play, replay, reset, isFinished, ...propsReturnedByAnimate } =
-    useMotionTimeline(sequence, options, events);
+const { play, replay, reset, isFinished, timelineInstance } = useMotionTimeline(
+    sequence,
+    options,
+    events,
+);
 ```
 
 `useMotionTimeline` returns:
@@ -195,7 +198,7 @@ const { play, replay, reset, isFinished, ...propsReturnedByAnimate } =
 -   `replay`: Resets and plays the animation
 -   `reset`: resets the element to its original styling
 -   `isFinished`: is `true` when animation has finished playing
--   `...propsReturnedByAnimate`: Refer to [motion one docs](https://motion.dev/dom/controls)
+-   `timelineInstance`: Refer to [motion one docs](https://motion.dev/dom/controls)
 
 `useMotionTimeline` accepts:
 

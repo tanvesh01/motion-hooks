@@ -5,6 +5,7 @@ import {
     timeline,
     AnimationListOptions,
     MotionKeyframesDefinition,
+    AnimationControls,
 } from 'motion';
 import { convertRefsToElement, isOfType } from '../../helpers/utils';
 import { TimelineOptions } from 'motion/types/targets/dom/timeline';
@@ -13,19 +14,6 @@ import { TimelineOptions } from 'motion/types/targets/dom/timeline';
 
 interface UseAnimationTypes {
     onFinish: (res: (value?: unknown) => void) => void;
-}
-
-interface NulledAnimationControls {
-    play: VoidFunction | null;
-    pause: VoidFunction | null;
-    stop: VoidFunction | null;
-    finish?: VoidFunction | null;
-    reverse?: VoidFunction | null;
-    cancel: VoidFunction | null;
-    finished?: Promise<unknown>;
-    currentTime: number | null;
-    playbackRate: number | null;
-    duration: number | null;
 }
 
 type ModifiedAcceptedElements = AcceptedElements | React.RefObject<any>;
@@ -40,15 +28,16 @@ interface UseAnimationTypes {
     onFinish: (res: (value?: unknown) => void) => void;
 }
 
-interface UseMotionTimelineReturn extends NulledAnimationControls {
+interface UseMotionTimelineReturn {
     play: () => void;
     reset: () => void;
     replay: () => void;
     isFinished: boolean;
+    timelineInstance: AnimationControls | null;
 }
 
 /**
- * `useMotionTimeline` returns all the properties returned by `animate` and some helper functions and state
+ * `useMotionTimeline` returns `timelineInstance` (Animation Controls) that are returned by `timeline` and some helper functions and state
  * for Example: `play`, `reset`, `replay` and `isFinished`
  * @param sequence - `sequence` is an array, defines animations with the same settings as the animate function. In the arrays,  Element can be either a string or a ref.
  * @param options - Optional parameter. Refer to [motion doc's](https://motion.dev/dom/timeline#options) for the values you could pass into this.
@@ -59,43 +48,25 @@ export const useMotionTimeline = (
     options?: TimelineOptions,
     events?: UseAnimationTypes,
 ): UseMotionTimelineReturn => {
-    const [propsRefContainer, setPropsRefContainer] =
-        useState<NulledAnimationControls>({
-            currentTime: null,
-            playbackRate: null,
-            // functions
-            pause: null,
-            play: null,
-            finish: null,
-            cancel: null,
-            stop: null,
-            duration: null,
-        });
+    const [timelineInstance, setTimelineInstance] =
+        useState<AnimationControls | null>(null);
     const [isFinished, setIsFinished] = useState<boolean>(false);
 
     const play = async () => {
-        const timelineInstance = timeline(convertRefsToElement(sequence), options);
+        const currentTimelineInstance = timeline(
+            convertRefsToElement(sequence),
+            options,
+        );
         setIsFinished(false);
-        await timelineInstance.finished.then((res) => {
+        setTimelineInstance(currentTimelineInstance);
+        await currentTimelineInstance.finished.then((res) => {
             events && events.onFinish(res);
             setIsFinished(true);
-        });
-
-        setPropsRefContainer({
-            currentTime: timelineInstance.currentTime,
-            playbackRate: timelineInstance.playbackRate,
-            // functions
-            pause: timelineInstance.pause,
-            play: timelineInstance.play,
-            finish: timelineInstance.finish,
-            cancel: timelineInstance.cancel,
-            stop: timelineInstance.stop,
-            duration: timelineInstance.duration,
         });
     };
 
     const reset = () => {
-        propsRefContainer.stop && propsRefContainer.stop();
+        timelineInstance && timelineInstance.stop();
         sequence.forEach((el) => {
             let selector = el[0];
             if (isOfType(selector, 'current')) {
@@ -117,7 +88,7 @@ export const useMotionTimeline = (
     };
 
     return {
-        ...propsRefContainer,
+        timelineInstance,
         play,
         reset,
         replay,
