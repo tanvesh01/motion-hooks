@@ -95,8 +95,12 @@ return <div ref={boxRef}>BOX</div>;
 **API**
 
 ```js
-const { play, replay, reset, isFinished, ...propsReturnedByAnimate } =
-    useMotionAnimate(selector, keyframes, options, events);
+const { play, replay, reset, isFinished, animateInstance } = useMotionAnimate(
+    selector,
+    keyframes,
+    options,
+    events,
+);
 ```
 
 `useMotionAnimate` returns:
@@ -105,7 +109,7 @@ const { play, replay, reset, isFinished, ...propsReturnedByAnimate } =
 -   `replay`: Resets and plays the animation
 -   `reset`: resets the element to its original styling
 -   `isFinished`: is `true` when animation has finished playing
--   `...propsReturnedByAnimate`: Refer to [motion one docs](https://motion.dev/dom/controls)
+-   `animateInstance`: Animation Controls. Refer to [motion one docs](https://motion.dev/dom/controls) for more.
 
 `useMotionAnimate` accepts:
 
@@ -207,6 +211,21 @@ const { play, replay, reset, isFinished, timelineInstance } = useMotionTimeline(
 -   `events` - Pass functions of whatever you want to happen when a event like `onFinish` happens. Exactly same as useMotionAnimate's `onFinish`.
 
 ---
+
+## Local Installation & Contributing
+
+-   Fork [motion-hooks](https://github.com/tanvesh01/motion-hooks)
+
+```sh
+git clone https://github.com/:github-username/motion-hooks.git
+cd motion-hooks
+npm install # Installs dependencies for motion-hooks
+cd examples # React app to test out changes
+npm install # Installs dependencies for example app
+npm run dev # To run example on localhost:3000
+```
+
+The contributing guidelines along with local setup guide is mentioned in [CONTRIBUTING.md](https://github.com/tanvesh01/motion-hooks/blob/main/CONTRIBUTING.md)
 
 Any Type of feedback is more than welcome! This project is in very early stage and would love to have contributors of any skill/exp level.
 
