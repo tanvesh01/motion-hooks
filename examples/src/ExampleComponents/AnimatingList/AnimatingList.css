@@ -1,0 +1,43 @@
+.listContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f2f2f2;
+    height: 100vh;
+}
+
+.listContainer button {
+    border: 1px solid #e4e4e4;
+    padding: 5px 15px;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.listContainer button:disabled {
+    cursor: not-allowed;
+}
+
+.list {
+    list-style: none;
+}
+
+.listItem {
+    opacity: 0;
+    border: 1px solid #e5e5e5;
+    margin: 1rem 0;
+    padding: 14px 15px;
+    border-radius: 0.3rem;
+    font-weight: 500;
+    background-color: white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.listItem p {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 4px 0 0 0;
+}

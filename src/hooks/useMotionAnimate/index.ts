@@ -3,6 +3,7 @@ import { useState } from 'react';
 import {
     AcceptedElements,
     animate,
+    AnimationControls,
     AnimationListOptions,
     MotionKeyframesDefinition,
 } from 'motion';
@@ -11,20 +12,8 @@ interface UseAnimationTypes {
     onFinish: (res: (value?: unknown) => void) => void;
 }
 
-interface NulledAnimationControls {
-    play: VoidFunction | null;
-    pause: VoidFunction | null;
-    stop: VoidFunction | null;
-    finish?: VoidFunction | null;
-    reverse?: VoidFunction | null;
-    cancel: VoidFunction | null;
-    finished?: Promise<unknown>;
-    currentTime: number | null;
-    playbackRate: number | null;
-}
-
 /**
- * `useMotionAnimate` returns all the properties returned by `animate` and some helper functions and state
+ * `useMotionAnimate` returns `animateInstance`(Animation Controls) returned by `animate` and some helper functions and state
  * for Example: `play`, `reset`, `replay` and `isFinished`
  * @param selector - The target element, can be string or a ref
  * @param keyframes - Element will animate from its current style to those defined in the keyframe. Refer to [motion's docs](https://motion.dev/dom/animate#keyframes) for more.
@@ -37,17 +26,9 @@ export const useMotionAnimate = (
     options?: AnimationListOptions | undefined,
     events?: UseAnimationTypes,
 ) => {
-    const [propsRefContainer, setPropsRefContainer] =
-        useState<NulledAnimationControls>({
-            currentTime: null,
-            playbackRate: null,
-            // functions
-            pause: null,
-            play: null,
-            finish: null,
-            cancel: null,
-            stop: null,
-        });
+    const [animateInstance, setAnimateInstance] = useState<AnimationControls | null>(
+        null,
+    );
     const [isFinished, setIsFinished] = useState<boolean>(false);
     const play = async () => {
         if (selector) {
@@ -60,28 +41,23 @@ export const useMotionAnimate = (
             }
 
             if (selectedType) {
-                const animateInstance = animate(selectedType, keyframes, options);
+                const currentAnimateInstance = animate(
+                    selectedType,
+                    keyframes,
+                    options,
+                );
                 setIsFinished(false);
-                await animateInstance.finished.then((res) => {
+                setAnimateInstance(currentAnimateInstance);
+                await currentAnimateInstance.finished.then((res) => {
                     events && events.onFinish(res);
                     setIsFinished(true);
-                });
-
-                setPropsRefContainer({
-                    currentTime: animateInstance.currentTime,
-                    playbackRate: animateInstance.playbackRate,
-                    // functions
-                    pause: animateInstance.pause,
-                    play: animateInstance.play,
-                    finish: animateInstance.finish,
-                    cancel: animateInstance.cancel,
-                    stop: animateInstance.stop,
                 });
             }
         }
     };
 
     const reset = () => {
+        animateInstance && animateInstance.stop();
         if (typeof selector !== 'string' && selector.current) {
             selector.current.style = null;
         } else if (typeof selector === 'string') {
@@ -100,7 +76,7 @@ export const useMotionAnimate = (
     };
 
     return {
-        ...propsRefContainer,
+        animateInstance,
         play,
         reset,
         replay,
