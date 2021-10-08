@@ -19,4 +19,4 @@ npm run dev # To run example on localhost:3000
 -   Make changes in your locally cloned fork
 -   Send Pull Request from your branch to `main` branch.
 
-Thank you and if you need any additional help, you can reach out to me on [Twitter @Sarve\_\_\_tanvesh](https://twitter.com/Sarve___tanvesh) or ask in our Discord Channel.
+Thank you and if you need any additional help, you can reach out to me on [Twitter @Sarve\_\_\_tanvesh](https://twitter.com/Sarve___tanvesh).
