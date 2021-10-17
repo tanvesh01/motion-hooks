@@ -1,0 +1,31 @@
+.CounterContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #252525;
+  height: 100vh;
+}
+
+.CounterContainer p {
+  margin: 0;
+  padding: 0;
+  color: #18faae;
+  font-family: "Inter";
+}
+
+.CounterContainer button {
+  border: 0;
+  background-color: #252525;
+  cursor: pointer;
+  padding: 0;
+}
+
+.CounterContainer .container {
+  padding: 0.5rem;
+  border-radius: 2.2rem;
+  border: 2px solid white;
+  text-align: center;
+}
+
