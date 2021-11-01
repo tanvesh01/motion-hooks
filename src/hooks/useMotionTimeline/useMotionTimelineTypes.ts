@@ -15,7 +15,7 @@ type segment =
     | [ModifiedAcceptedElements, MotionKeyframesDefinition]
     | [ModifiedAcceptedElements, MotionKeyframesDefinition, AnimationListOptions];
 
-export type SequenceDefination = segment[];
+type SequenceDefination = segment[];
 
 export interface UseMotionTimelineReturn {
     play: () => void;
@@ -24,3 +24,5 @@ export interface UseMotionTimelineReturn {
     isFinished: boolean;
     timelineInstance: AnimationControls | null;
 }
+
+export type { SequenceDefination };
