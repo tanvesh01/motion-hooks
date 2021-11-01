@@ -1,0 +1,53 @@
+.App {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  height: 100vh;
+  font-family: "Inter";
+}
+
+.gif {
+  width: auto;
+  border-radius: 1rem;
+}
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.heading {
+  color: rgb(31, 31, 31);
+  opacity: 0;
+  font-weight: 700;
+  margin: 0;
+}
+
+.App p {
+   margin: 0;
+  padding: 0;
+  opacity: 0;
+  color: grey;
+}
+
+.App button {
+  border: 1px solid #e4e4e4;
+  padding: 5px 15px;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+.App button:disabled {
+  cursor: not-allowed;
+}
+
+.App button {
+  margin-bottom: 3rem;
+}
+

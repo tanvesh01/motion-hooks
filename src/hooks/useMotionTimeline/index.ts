@@ -1,40 +1,13 @@
 import { useState } from 'react';
 
-import {
-    AcceptedElements,
-    timeline,
-    AnimationListOptions,
-    MotionKeyframesDefinition,
-    AnimationControls,
-} from 'motion';
+import { timeline, AnimationControls } from 'motion';
 import { convertRefsToElement, isOfType } from '../../helpers/utils';
 import { TimelineOptions } from 'motion/types/targets/dom/timeline';
-
-// TODO: Place all these types/interfaces in another file
-
-interface UseAnimationTypes {
-    onFinish: (res: (value?: unknown) => void) => void;
-}
-
-type ModifiedAcceptedElements = AcceptedElements | React.RefObject<any>;
-
-type segment =
-    | [ModifiedAcceptedElements, MotionKeyframesDefinition]
-    | [ModifiedAcceptedElements, MotionKeyframesDefinition, AnimationListOptions];
-
-export type SequenceDefination = segment[];
-
-interface UseAnimationTypes {
-    onFinish: (res: (value?: unknown) => void) => void;
-}
-
-interface UseMotionTimelineReturn {
-    play: () => void;
-    reset: () => void;
-    replay: () => void;
-    isFinished: boolean;
-    timelineInstance: AnimationControls | null;
-}
+import {
+    SequenceDefination,
+    UseAnimationTypes,
+    UseMotionTimelineReturn,
+} from './useMotionTimelineTypes';
 
 /**
  * `useMotionTimeline` returns `timelineInstance` (Animation Controls) that are returned by `timeline` and some helper functions and state
