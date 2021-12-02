@@ -10,7 +10,7 @@ cd motion-hooks
 npm install # Installs dependencies for motion-hooks
 cd examples # React app to test out changes
 npm install # Installs dependencies for example app
-npm run dev # To run example on localhost:3000
+npm run start # To run example on localhost:3000
 ```
 
 ## Creating Pull Request
