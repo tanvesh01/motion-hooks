@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { timeline, AnimationControls } from 'motion';
 import { convertRefsToElement, isOfType } from '../../helpers/utils';
-import { TimelineOptions } from 'motion/types/targets/dom/timeline';
+import { TimelineOptions } from '@motionone/dom/types/timeline';
 import {
     SequenceDefination,
     UseAnimationTypes,

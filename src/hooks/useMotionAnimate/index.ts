@@ -1,12 +1,11 @@
 import { useState } from 'react';
+import { animate, AnimationControls } from 'motion';
 
 import {
     AcceptedElements,
-    animate,
-    AnimationControls,
     AnimationListOptions,
     MotionKeyframesDefinition,
-} from 'motion';
+} from '@motionone/dom/types/animate/types';
 
 interface UseAnimationTypes {
     onFinish: (res: (value?: unknown) => void) => void;

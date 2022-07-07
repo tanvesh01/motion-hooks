@@ -33,12 +33,13 @@
     ]
   },
   "peerDependencies": {
-    "motion": "^10.1.1",
+    "motion": "^10.11.1",
     "react": ">= 17.0.2",
     "react-dom": ">= 17.0.2"
   },
   "devDependencies": {
-    "@testing-library/react-hooks": "^3.4.1",
+    "@motionone/types": "^10.9.0",
+    "@testing-library/react-hooks": "^8.0.1",
     "@types/jest": "^26.0.7",
     "@types/react": "^16.3.13",
     "@types/react-dom": "^16.0.5",
