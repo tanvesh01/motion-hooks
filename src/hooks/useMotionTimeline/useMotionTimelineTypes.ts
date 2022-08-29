@@ -1,9 +1,10 @@
+import { AnimationControls } from 'motion';
+
 import {
     AcceptedElements,
     AnimationListOptions,
     MotionKeyframesDefinition,
-    AnimationControls,
-} from 'motion';
+} from '@motionone/dom/types/animate/types';
 
 export interface UseAnimationTypes {
     onFinish: (res: (value?: unknown) => void) => void;

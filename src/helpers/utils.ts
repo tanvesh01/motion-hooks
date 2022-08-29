@@ -1,4 +1,4 @@
-import { TimelineDefinition } from 'motion/types/targets/dom/timeline/types';
+import { TimelineDefinition } from '@motionone/dom/types/timeline/types';
 import { SequenceDefination } from '../hooks/useMotionTimeline/useMotionTimelineTypes';
 
 export const isOfType = <T>(
